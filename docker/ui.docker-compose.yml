@@ -1,0 +1,51 @@
+version: '3.7'
+services:
+  ui:
+    build:
+      dockerfile: docker/ui.Dockerfile
+      context: ..
+    volumes:
+      - ../oerworldmap-ui:/srv/oerworldmap-ui
+      - ./ui.env:/srv/oerworldmap-ui/.env
+    expose:
+      - 3000
+
+  pages:
+      image: jekyll/jekyll:stable
+      command: jekyll serve --watch --incremental
+      expose:
+          - 4000
+      volumes:
+          - ../oerworldmap-ui/docs:/srv/jekyll
+
+  httpd:
+    build:
+      dockerfile: docker/ui-httpd.Dockerfile
+      context: ..
+    volumes:
+      - ../oerworldmap-api:/srv/oerworldmap
+    ports:
+      - '8080:80'
+
+  scala:
+    build:
+      context: ..
+      dockerfile: docker/scala.Dockerfile
+    volumes:
+      - ../oerworldmap-api:/srv/oerworldmap
+      - ../cache/scala-homedir:/root
+      - ./application.docker.conf:/srv/oerworldmap/conf/application.conf
+    ports:
+      - '9000:9000'
+    depends_on:
+      - elasticsearch
+    # FIXME: `sbt run` dies when `< /dev/null` so we need to connect to the terminal, for now.
+    stdin_open: true # docker run -i
+    tty: true        # docker run -t
+
+  elasticsearch:
+    build:
+      dockerfile: docker/elasticsearch.Dockerfile
+      context: ..
+    expose:
+      - 9200

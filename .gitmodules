@@ -1,0 +1,6 @@
+[submodule "oerworldmap-api"]
+	path = oerworldmap-api
+	url = git@github.com:wmde/oerworldmap.git
+[submodule "oerworldmap-ui"]
+	path = oerworldmap-ui
+	url = git@github.com:wmde/oerworldmap-ui.git
