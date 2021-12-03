@@ -10,4 +10,4 @@ To launch a UI-only container for development,
 
 Expect half an hour of downloading and compiling on the first run.  The application is available at http://localhost:8080/
 
-Once running, the UI services are in development mode, they will hot-reload whenever code is changed.
+FIXME: Once running, the UI services should be in development mode and hot-reload whenever code is changed, however the job stays at 100% CPU so this is disabled for now.
