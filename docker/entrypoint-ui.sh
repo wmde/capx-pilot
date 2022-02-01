@@ -5,4 +5,6 @@ npm install
 # hang indefinitely in this docker environment.
 # npm run build:dev
 npm run build:prod
-npm run server:dev
+npm run site:prod
+#npm run server:dev
+npm run server:prod

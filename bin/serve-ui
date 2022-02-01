@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-docker-compose -f docker/ui.docker-compose.yml up --build
+docker-compose -f docker/docker-compose.yml up --build

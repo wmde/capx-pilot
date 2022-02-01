@@ -7,16 +7,16 @@ services:
     volumes:
       - ../oerworldmap-ui:/srv/oerworldmap-ui
       - ./ui.env:/srv/oerworldmap-ui/.env
-    expose:
-      - 3000
+    ports:
+      - 3000:3000
 
   pages:
       image: jekyll/jekyll:stable
       command: jekyll serve --watch --incremental
-      expose:
-          - 4000
       volumes:
           - ../oerworldmap-ui/docs:/srv/jekyll
+      ports:
+          - 4000:4000
 
   httpd:
     build:
@@ -26,6 +26,18 @@ services:
       - ../oerworldmap-api:/srv/oerworldmap
     ports:
       - '8080:80'
+  
+  keycloak:
+    image: jboss/keycloak
+    ports:
+      - '8081:8080'
+    volumes:
+      - ./oerworldmap-realm.json:/oerworldmap-realm.json
+      - ./oerworldmap-keycloak-theme:/opt/jboss/keycloak/themes/oerworldmap-keycloak-theme
+    environment:
+      - KEYCLOAK_USER=admin
+      - KEYCLOAK_PASSWORD=password
+      - KEYCLOAK_IMPORT=/oerworldmap-realm.json
 
   scala:
     build:
