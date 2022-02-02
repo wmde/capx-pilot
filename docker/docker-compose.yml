@@ -13,6 +13,8 @@ services:
   pages:
       image: jekyll/jekyll:stable
       command: jekyll serve --watch --incremental
+      environment:
+        - JEKYLL_ENV=production
       volumes:
           - ../oerworldmap-ui/docs:/srv/jekyll
       ports:
