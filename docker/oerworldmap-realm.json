@@ -470,7 +470,7 @@
       "clientAuthenticatorType": "client-secret",
       "secret": "**********",
       "redirectUris": [
-        "https://oerworldmap.wmcloud.org/*"
+        "*"
       ],
       "webOrigins": [],
       "notBefore": 0,
