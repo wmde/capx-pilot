@@ -4,6 +4,3 @@
 [submodule "oerworldmap-ui"]
 	path = oerworldmap-ui
 	url = git@github.com:wmde/oerworldmap-ui.git
-[submodule "docker/oerworldmap-keycloak-theme"]
-	path = docker/oerworldmap-keycloak-theme
-	url = https://github.com/hbz/oerworldmap-keycloak-theme

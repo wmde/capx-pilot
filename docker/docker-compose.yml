@@ -8,7 +8,7 @@ services:
       - ../oerworldmap-ui:/srv/oerworldmap-ui
       - ./ui.env:/srv/oerworldmap-ui/.env
     ports:
-      - 3000:3000
+      - 3000:80
 
   pages:
       image: jekyll/jekyll:stable
@@ -19,27 +19,6 @@ services:
           - ../oerworldmap-ui/docs:/srv/jekyll
       ports:
           - 4000:4000
-
-  httpd:
-    build:
-      dockerfile: docker/ui-httpd.Dockerfile
-      context: ..
-    volumes:
-      - ../oerworldmap-api:/srv/oerworldmap
-    ports:
-      - '8080:80'
-  
-  keycloak:
-    image: jboss/keycloak
-    ports:
-      - '8081:8080'
-    volumes:
-      - ./oerworldmap-realm.json:/oerworldmap-realm.json
-      - ./oerworldmap-keycloak-theme:/opt/jboss/keycloak/themes/oerworldmap-keycloak-theme
-    environment:
-      - KEYCLOAK_USER=admin
-      - KEYCLOAK_PASSWORD=password
-      - KEYCLOAK_IMPORT=/oerworldmap-realm.json
 
   scala:
     build:
