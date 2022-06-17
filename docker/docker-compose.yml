@@ -11,7 +11,7 @@ services:
       - 3000:3000
 
   pages:
-    image: jekyll/jekyll:stable
+    image: jekyll/jekyll:4.2.0
     command: jekyll serve --watch --incremental
     environment:
       - JEKYLL_ENV=production
