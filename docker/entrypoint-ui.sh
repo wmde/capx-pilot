@@ -7,8 +7,6 @@ yarn install
 
 yarn run build:dev &
 
-# TODO: What is `site`?
-#yarn run site:dev
-#npm run server:dev
+yarn run site:dev &
 
 yarn run server:dev
