@@ -9,10 +9,9 @@ services:
       - "./ui.env:/srv/oerworldmap-ui/.env"
     ports:
       - 3000:3000
-    extra_hosts:
+    #extra_hosts:
       # Local hostnames can be aliased like so:
       # - dev.wiki:host-gateway
-      - "dev.wiki:host-gateway"
 
   pages:
     image: "jekyll/jekyll:4.2.0"
