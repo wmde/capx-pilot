@@ -43,5 +43,5 @@ services:
     build:
       dockerfile: docker/elasticsearch.Dockerfile
       context: ..
-    expose:
-      - 9200
+    ports:
+        - "9200:9200"
